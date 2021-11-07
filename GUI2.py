@@ -6,7 +6,7 @@ class Tile: #Los objetos tipo Tile van a ser las partes que constituyen la sopa 
         self.coordenadax = x
         self.coordenaday = y
         self.color = color
-        self.frame = ttk.Frame(wn, relief = "sunken", borderwidth = 1)
+        self.frame = ttk.Frame(wn, borderwidth = 1)
         self.label = ttk.Label(self.frame, text= letra, background = "white", font = ("Sans Serif",20),)
         self.label.pack()
 class Sopa:
@@ -29,7 +29,11 @@ class Sopa:
 
 def main(coordenadas, sopa):
     window = tkinter.Tk()
+    frm = tkinter.Frame(window, bg = "white")
     s = Sopa(sopa)
-    s.construir(window)
+    s.construir(frm)
+    frm.rowconfigure(0, weight =1)
+    frm.columnconfigure(0, weight =1)
+    frm.grid()
     window.mainloop()
     
