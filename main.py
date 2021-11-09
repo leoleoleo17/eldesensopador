@@ -1,4 +1,4 @@
-import funciones
+import algoritmo
 import GUI2
 import prueba1
 
@@ -10,6 +10,6 @@ words = prueba1.palabraBuscar
 print(words)
 for x in words:
     coordenadas = ()
-    coordenadas = funciones.buscapalabras(x, sopa)
+    coordenadas = algoritmo.buscapalabras(x, sopa)
     coordenadas_dict[x]= coordenadas
 GUI2.main(coordenadas_dict, sopa)
