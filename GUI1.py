@@ -55,11 +55,13 @@ def pedirFila(raiz, entradas, columnas, filas): #pide el string de letras de cad
                 botonDelete.grid(row=1,column=1, pady=5, padx= 5)
             else: #si es menor a 0 entra aquí
                 n_label1 = Label(secondFrame, text="¡Error! Introduzca un número positivo")
+                n_label1.config(bg="white")
                 n_label1.grid()
                 botonOK = Button(secondFrame, text="¡OK!", command=lambda:ejecucion(raiz, secondFrame))
                 botonOK.grid(pady=5)
         else: #Si es vacio entra aquí
             n_label1 = Label(secondFrame, text="¡Error! Introduzca un número")
+            n_label1.config(bg="white")
             n_label1.grid()
             n_label1.config(bg="white")
             botonOK = Button(secondFrame, text="¡OK!", command=lambda:ejecucion(raiz, secondFrame))
