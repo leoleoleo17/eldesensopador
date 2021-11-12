@@ -33,8 +33,18 @@ class Sopa: #Es una colección de Tiles
         coordenadas = coordenadas[palabra]
         x_coordenadas = []
         y_coordenadas = []
-        if coordenadas == None:
-            return print("La palabra no está en la sopa")
+        if coordenadas == None: #Muestra un error cuando la palabra no está en la sopa
+            error = tkinter.Tk()
+            error.configure(bg= "white")
+            error.title("¡Error!")
+            error.eval('tk::PlaceWindow . center')
+
+            notificacion = ttk.Label(error, background="white", font=("Sans Serif", 20), text="La palabra no está en la sopa")
+            notificacion.grid(row= 0, column=0)
+
+            boton = ttk.Button(error, text= "OK", command=lambda: error.destroy())
+            boton.grid(column= 0, row =1)
+            return 0
         for w in range(len(coordenadas)):
             if w % 2 == 0:
                 x_coordenadas.append(coordenadas[w])
@@ -43,6 +53,7 @@ class Sopa: #Es una colección de Tiles
         for x, y in zip(x_coordenadas,y_coordenadas): #Zip itera ambas listas al mismo tiempo
             for tile in self.sopa_tiles:
                 if (tile.coordenadax == x) and (tile.coordenaday == y):
+                    tile.frame.destroy()
                     new_tile = Tile(x,y, color , wn, tile.letra)
                     new_tile.frame.grid(column= y, row = x)
             
@@ -50,18 +61,22 @@ def main(coordenadas, sopa): #Ejecuta el GUI como tal
     window = tkinter.Tk()
     window.configure(bg="white")
     window.title("¡Haz click en los botones!")
-    mainframe = ttk.Frame(window)
+    window.eval('tk::PlaceWindow . center')
+
+    mainframe = tkinter.Frame(window, bg= "white")
     s = Sopa(sopa)
     s.construir(mainframe)
     window.rowconfigure(0,weight=1)
     window.columnconfigure(0,weight=1)
     mainframe.grid(column= 0, row= 0) #Espacio para la sopa en la ventana principal
+    
     botones = ttk.Frame(window)
     counter_rows = 0
     for palabra in coordenadas: #Construye los botones a la derecha de la sopa
         b = ttk.Button(botones,text = palabra, command= lambda new_word = palabra: s.highlight(coordenadas, "yellow", new_word, mainframe)) #Crea una función lambda para evitar que se ejecute highlight cuando se crean los botones
         b.grid(row= counter_rows, column=0)
         counter_rows += 1
+
     window.columnconfigure(1, weight=1) #Espacio para los botones en la ventana principal
     botones.grid(row= 0, column = 1) 
     window.mainloop()
