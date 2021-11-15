@@ -236,7 +236,7 @@ def main():
     titulo = Label(inicio, text="BIENVENIDOS AL DESENSOPADOR") #empaqueta el label en el frame
     titulo.grid(row=0,column=0, pady=5)
     titulo.config(bg="white", fg="blue", font=("Sans Serif",20))
-    subTitulo = Label(inicio, text="Realizado por: Leonardo Luengas, Juan Andres Castro y Juan Felipe Guerrero")
+    subTitulo = Label(inicio, text="Realizado por: Leonardo Luengas y Juan Andres Castro")
     subTitulo.grid(row=1,column=0, pady=5)
     subTitulo.config(bg="white", font=("Sans Serif", 9))
     boton = Button(inicio, text="INICIAR", command=lambda:ejecucion(raiz, inicio)) #al oprimir llama a la funcion ejecucion
