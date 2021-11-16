@@ -70,7 +70,7 @@ def palabras_invertidas(row, position, sopa, wrd):
         coordenadas = diagonal(row, position, sopa, palabratemp, palabratemp2)
         if coordenadas != None:
             return coordenadas
-    if ((len(wrd)-position) <= (len(sopa[row]))) and ((row + len(wrd)) <= (len(sopa))): #Revisa si la palabra cabe en diagonal de derecha a izquierda
+    if ((position) >= (len(wrd)-1))) and ((row + len(wrd)) <= (len(sopa))): #Revisa si la palabra cabe en diagonal de derecha a izquierda
         coordenadas = diagonal_al_reves(row, position, sopa, palabratemp, palabratemp2)
         if coordenadas != None:
             return coordenadas
@@ -89,7 +89,7 @@ def palabras_al_derecho(row, position, sopa, wrd):
         coordenadas = diagonal(row, position, sopa, wrd, palabratemp2)
         if coordenadas != None:
             return coordenadas
-    if ((len(wrd)-position) <= (len(sopa[row]))) and ((row + len(wrd)) <= (len(sopa))): #Revisa si la palabra cabe en diagonal de derecha a izquierda
+    if ((position) >= (len(wrd)-1))) and ((row + len(wrd)) <= (len(sopa))): #Revisa si la palabra cabe en diagonal de derecha a izquierda
         coordenadas = diagonal_al_reves(row, position, sopa, wrd, palabratemp2)
         if coordenadas != None:
             return coordenadas
